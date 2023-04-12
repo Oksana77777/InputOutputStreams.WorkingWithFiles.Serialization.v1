@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.Arrays;
+
 public class Basket implements Serializable {
     private static final long serialVersionUID = 1L; // сериализация
     private String[] goods;
@@ -47,6 +48,7 @@ public class Basket implements Serializable {
 
         }
     }
+
     public static Basket loadFromTxtFile(File textFile) {
         Basket basket = new Basket();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(textFile))) {
@@ -54,13 +56,13 @@ public class Basket implements Serializable {
             String pricesStr = bufferedReader.readLine();
             String quantitiesStr = bufferedReader.readLine();
 
-            basket.goods = goodsStr.split( " ");
-            basket.prices = Arrays.stream(pricesStr.split( " "))
+            basket.goods = goodsStr.split(" ");
+            basket.prices = Arrays.stream(pricesStr.split(" "))
                     .map(Integer::parseInt)
                     .mapToInt(Integer::intValue)
                     .toArray();
 
-            basket.quantities = Arrays.stream(quantitiesStr.split( " "))
+            basket.quantities = Arrays.stream(quantitiesStr.split(" "))
                     .map(Integer::parseInt)
                     .mapToInt(Integer::intValue)
                     .toArray();
@@ -73,15 +75,16 @@ public class Basket implements Serializable {
 
     public void saveBin(File file) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-oos.writeObject(this);
+            oos.writeObject(this);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     public static Basket loadFromBinFile(File file) {
         Basket basket = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-basket = (Basket) ois.readObject();
+            basket = (Basket) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
