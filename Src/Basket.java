@@ -21,7 +21,7 @@ public class Basket {
  }
 
  public void printCart() {
-  //вывод корзины
+
   int totalPrice = 0;
   System.out.println("Список покупок:");
   for (int i = 0; i < goods.length; i++) {
