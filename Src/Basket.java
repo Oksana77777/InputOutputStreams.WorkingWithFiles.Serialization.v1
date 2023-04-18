@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Arrays;
 
 public class Basket implements Serializable {
-    private static final long serialVersionUID = 1L; // сериализация
+    private static final long serialVersionUID = 1L; 
     private String[] goods;
     private int[] prices;
     private int[] quantities;
@@ -23,7 +23,7 @@ public class Basket implements Serializable {
     }
 
     public void printCart() {
-        //вывод корзины
+       
         int totalPrice = 0;
         System.out.println("Список покупок:");
         for (int i = 0; i < goods.length; i++) {
